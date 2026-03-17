@@ -27,13 +27,48 @@ const categoryIcons = {
 
 // Inicialização da app após carregamento do DOM
 document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
     init();
 });
 
 async function init() {
+    setupThemeToggle();
     setupFilterListeners();
     await loadData();
     renderCards();
+}
+
+/**
+ * Controla e inicializa o tema escuro/claro
+ */
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    
+    // Verifica a preferência do sistema, se não houver preferência local
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    } else {
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (prefersDark) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    }
+}
+
+/**
+ * Listener do botão Dark/Light Mode
+ */
+function setupThemeToggle() {
+    const themeBtn = document.getElementById('theme-toggle');
+    if (!themeBtn) return;
+    
+    themeBtn.addEventListener('click', () => {
+        let currentTheme = document.documentElement.getAttribute('data-theme');
+        let newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
 }
 
 /**

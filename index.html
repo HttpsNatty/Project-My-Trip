@@ -12,7 +12,13 @@
     <div class="app-container">
         <!-- Cabeçalho -->
         <header>
-            <h1>Roteiro - São Paulo 🏙️</h1>
+            <div class="header-top">
+                <h1>Roteiro - São Paulo 🏙️</h1>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+                    <span class="icon-light">☀️</span>
+                    <span class="icon-dark">🌙</span>
+                </button>
+            </div>
             <p>Seu guia de viagem leve, rápido e simples.</p>
         </header>
 
@@ -44,7 +50,7 @@
 
         <!-- Lista Principal e Cards -->
         <main id="itinerary-list" class="itinerary-list">
-            <div class="loading">Iniciando a leitura do arquivo TSV...</div>
+            <div class="loading">Carregando dados da viagem...</div>
         </main>
     </div>
 
