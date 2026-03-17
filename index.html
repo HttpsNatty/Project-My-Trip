@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roteiro - São Paulo</title>
+    <!-- Fonte Inter para um estilo claro e moderno -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Cabeçalho -->
+        <header>
+            <h1>Roteiro - São Paulo 🏙️</h1>
+            <p>Seu guia de viagem leve, rápido e simples.</p>
+        </header>
+
+        <!-- Filtros -->
+        <nav class="filters">
+            <!-- Filtro de Dias -->
+            <div class="filter-group day-filters">
+                <button class="filter-btn active" data-type="dia" data-value="todos">Todos os Dias</button>
+                <button class="filter-btn" data-type="dia" data-value="quinta">Quinta</button>
+                <button class="filter-btn" data-type="dia" data-value="sexta">Sexta</button>
+                <button class="filter-btn" data-type="dia" data-value="sabado">Sábado</button>
+                <button class="filter-btn" data-type="dia" data-value="domingo">Domingo</button>
+            </div>
+            
+            <!-- Filtro de Categorias -->
+            <div class="filter-group category-filters">
+                <button class="filter-btn active" data-type="categoria" data-value="todos">Tudo</button>
+                <button class="filter-btn" data-type="categoria" data-value="transporte">✈️ Transporte</button>
+                <button class="filter-btn" data-type="categoria" data-value="hotel">🏨 Hotel</button>
+                <button class="filter-btn" data-type="categoria" data-value="cafe">☕ Café</button>
+                <button class="filter-btn" data-type="categoria" data-value="restaurante">🍽️ Restaurante</button>
+                <button class="filter-btn" data-type="categoria" data-value="ponto_turistico">📸 Ponto Turístico</button>
+                <button class="filter-btn" data-type="categoria" data-value="museu">🖼️ Museu</button>
+                <button class="filter-btn" data-type="categoria" data-value="parque">🌳 Parque</button>
+                <button class="filter-btn" data-type="categoria" data-value="shopping">🛍️ Shopping</button>
+                <button class="filter-btn" data-type="categoria" data-value="evento">🎫 Evento</button>
+            </div>
+        </nav>
+
+        <!-- Lista Principal e Cards -->
+        <main id="itinerary-list" class="itinerary-list">
+            <div class="loading">Iniciando a leitura do arquivo TSV...</div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

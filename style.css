@@ -1,0 +1,219 @@
+/* index.css e estilo base */
+:root {
+    --bg-color: #f8fafc;        /* Fundo limpo, levemente cinza/azulado */
+    --text-main: #1e293b;       /* Texto escuro bem legível */
+    --text-muted: #64748b;      /* Texto de apoio */
+    --primary: #3b82f6;         /* Cor de destaque principal (Blue) */
+    --card-bg: #ffffff;         /* Cor do card */
+    
+    /* Cores designadas para categorias para diferenciação visual */
+    --cat-transporte: #94a3b8;
+    --cat-hotel: #8b5cf6;
+    --cat-cafe: #f59e0b;
+    --cat-restaurante: #ef4444;
+    --cat-ponto_turistico: #0ea5e9;
+    --cat-museu: #d946ef;
+    --cat-parque: #10b981;
+    --cat-shopping: #f43f5e;
+    --cat-evento: #8b5cf6;
+    
+    /* Efeitos de sombra sutis - estética premium */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-pill: 9999px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    padding: 2rem 1rem;
+}
+
+.app-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #0f172a;
+    letter-spacing: -0.025em;
+}
+
+header p {
+    color: var(--text-muted);
+    font-size: 1.125rem;
+}
+
+/* --- Filtros --- */
+.filters {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.filter-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
+.filter-btn {
+    background: var(--bg-color);
+    border: 1px solid transparent;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-pill);
+    font-family: inherit;
+    font-weight: 500;
+    color: var(--text-main);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.9rem;
+}
+
+.filter-btn:hover {
+    background: #e2e8f0;
+    transform: translateY(-1px);
+}
+
+.filter-btn.active {
+    background: var(--primary);
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
+/* --- Lista e Cards --- */
+.itinerary-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-shadow: var(--shadow-sm);
+    border-left: 6px solid #cbd5e1;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1e293b;
+    line-height: 1.3;
+}
+
+.card-time {
+    background: #f1f5f9;
+    color: #334155;
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    white-space: nowrap;
+}
+
+.day-label {
+    text-transform: capitalize;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.card-location {
+    font-size: 0.95rem;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.card-obs {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: italic;
+    background: #f8fafc;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border-left: 2px solid #cbd5e1;
+}
+
+.empty-state, .loading {
+    text-align: center;
+    padding: 4rem 1rem;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    background: var(--card-bg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+/* --- Cores Visuais Dinâmicas por Categoria --- */
+.card[data-category="transporte"] { border-left-color: var(--cat-transporte); }
+.card[data-category="hotel"] { border-left-color: var(--cat-hotel); }
+.card[data-category="cafe"] { border-left-color: var(--cat-cafe); }
+.card[data-category="restaurante"] { border-left-color: var(--cat-restaurante); }
+.card[data-category="ponto_turistico"] { border-left-color: var(--cat-ponto_turistico); }
+.card[data-category="museu"] { border-left-color: var(--cat-museu); }
+.card[data-category="parque"] { border-left-color: var(--cat-parque); }
+.card[data-category="shopping"] { border-left-color: var(--cat-shopping); }
+.card[data-category="evento"] { border-left-color: var(--cat-evento); }
+
+/* Feedback em telas pequenas */
+@media (max-width: 600px) {
+    .card-header {
+        flex-direction: column;
+    }
+    .card-time {
+        align-self: flex-start;
+    }
+}
