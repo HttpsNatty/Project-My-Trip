@@ -253,6 +253,18 @@ header p {
     border-left: 2px solid var(--obs-border);
 }
 
+.card-location a,
+.card-obs a {
+    color: var(--primary);
+    text-decoration: none;
+    word-break: break-all;
+}
+
+.card-location a:hover,
+.card-obs a:hover {
+    text-decoration: underline;
+}
+
 .empty-state, .loading {
     text-align: center;
     padding: 4rem 1rem;

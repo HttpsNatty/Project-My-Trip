@@ -157,6 +157,17 @@ function parseTSV(tsvText) {
 }
 
 /**
+ * Transforma texto contendo URLs em links HTML clicáveis
+ */
+function linkify(text) {
+    if (!text) return '';
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    return text.replace(urlRegex, function(url) {
+        return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
+    });
+}
+
+/**
  * Filtra as informações usando o "state" atual e renderiza no documento
  */
 function renderCards() {
@@ -193,8 +204,8 @@ function renderCards() {
         const icon = categoryIcons[catKey] || '📍';
         
         // Só renderiza partes se elas existirem (evita campos vazios sujos)
-        const locationHTML = item.local ? `<div class="card-location">📍 ${item.local}</div>` : '';
-        const obsHTML = item.obs ? `<div class="card-obs">${item.obs}</div>` : '';
+        const locationHTML = item.local ? `<div class="card-location">📍 ${linkify(item.local)}</div>` : '';
+        const obsHTML = item.obs ? `<div class="card-obs">${linkify(item.obs)}</div>` : '';
         
         const cardHtml = `
             <article class="card" data-category="${catKey}">
